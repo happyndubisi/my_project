@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+/Users/happinessndubisi/Documents/obsidi/project-work-space/.metadata/.plugins/org.eclipse.jdt.core
+1518660116.index
+689086245.index
+941874761.index
