@@ -34,28 +34,28 @@ public class Inventory extends Color {
 	// method to add new category and product
 	public void handleAddProduct() {
 		System.out.println(CYAN +"What Category is the Product?");
-		displayAllCategory(); // to display all existing category
+		displayAllCategory(); 
 		System.out.println(CYAN +"****************************"+RESET);
-		String productCategoryEntry = scanner.nextLine(); // stores the user input for the product category
+		String productCategoryEntry = scanner.nextLine();
 		System.out.println(CYAN + "****************************\n"+RESET);
 
-		boolean categoryFound = false; // to track if the product get added
+		boolean categoryFound = false;
 		for (String item : productList.keySet()) {
 			if (item.equalsIgnoreCase(productCategoryEntry)) {
-				categoryFound = true; 
+				categoryFound = true;
 				productCategoryEntry = item;
 				break;  // Stop checking further categories once found
 			}
 		}
-		if (!categoryFound) {// if the product category entered is not found
-			System.out.println(RED+ "Category entered does not exist"+RESET);// notify the user
-			System.out.println(CYAN+"Do you want to create a new category?");// ask if they want to create a new category
+		if (!categoryFound) {
+			System.out.println(RED+ "Category entered does not exist"+RESET);
+			System.out.println(CYAN+"Do you want to create a new category?");
 			System.out.println(GREEN+"1. Yes");
 			System.out.println("2. No"+RESET);
 			int yesToNewCategory = scanner.nextInt();
 			scanner.nextLine(); // consume leftover newline
 
-			if (yesToNewCategory != 1) { 
+			if (yesToNewCategory != 1) {
 				return;  // Exit if the user doesn't want to create a new category
 			} else {
 				System.out.println(GREEN+"Enter the new Category:"+RESET);
@@ -241,6 +241,8 @@ public class Inventory extends Color {
 				}
 
 
+
+
 				case 2->{
 					System.out.print(GREEN+"Enter the new product ID: "+RESET);
 					System.out.println("\n");
@@ -296,15 +298,16 @@ public class Inventory extends Color {
 					//e.printStackTrace();
 				}
 
-			}catch(InputMismatchException e) {//to catch errors when the user enter alphabet instead of numbers
+
+			}catch(InputMismatchException e) {
 				System.out.println("Please enter a number from 1 - 5");
 				//e.printStackTrace();
-			}catch(NumberFormatException e) { // to catch numbers related error user enter
+			}catch(NumberFormatException e) {
 				System.out.println("Please enter a number from 1 - 5");
 				//e.printStackTrace();
 
 
-			}catch(Exception e) { // to catch any other exception the above catch did not catch
+			}catch(Exception e) {
 				System.out.println("An error occured, please enter a number from 1-5");
 			}
 

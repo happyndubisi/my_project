@@ -18,8 +18,6 @@ public class InventoryFileHandling extends Inventory {
 		readProductListFromFile();
 		
 	}
-	
-	//Override methods from inventory class and call the saveProductListToFile to save file after the method get call
 	@Override
 	public Product addProduct(String category,String productName,String productID,double price,int quantity){
 		Product product = super.addProduct(category,productName, productID,price, quantity);
@@ -39,12 +37,6 @@ public class InventoryFileHandling extends Inventory {
 	@Override
 	public void removeCategory(){
 		super.removeCategory();
-		saveProductListToFile();
-		
-	}
-	@Override
-	public void updateProduct(){
-		super.updateProduct();
 		saveProductListToFile();
 		
 	}

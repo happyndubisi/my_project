@@ -30,7 +30,7 @@ public class Product implements Serializable{
 	}
 
 	
-	// getter to access the instant variables 
+	// getter for the instant variables
 	public String getProductName(){
 		return productName;
 	}

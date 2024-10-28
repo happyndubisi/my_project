@@ -14,10 +14,7 @@ public class InventoryTest {
 	void setUp() {
 		inventory = new Inventory(new Scanner(System.in));
 	}
-	    
-	// to test the addProduct method, by comparing the size of the list before and after the method get call 
-	@Test
-	    
+	    @Test
 	    public void testAddProduct()
 	    {
 	      
@@ -34,9 +31,8 @@ public class InventoryTest {
 	       assert(categoryNewProductSize > categoryPreviousProductSize);
 	    }
 	    
-	// to test the removeProduct method by comparing the size of the list before and after the method get call   
-	@Test
-	   
+	    @Test
+	    
 	    public void testRemoveProduct()
 	    {
 	       
