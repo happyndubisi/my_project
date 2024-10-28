@@ -1,0 +1,70 @@
+package personl_project.my_project;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class InventoryFileHandling extends Inventory {
+	final String inventoryFile = "inventoryFile.happi";
+	
+
+	public InventoryFileHandling(Scanner scanner) {
+		super(scanner);
+		readProductListFromFile();
+		
+	}
+	@Override
+	public void addProduct(){
+		super.addProduct();
+		saveProductListToFile();
+		
+	}
+		
+	@Override
+	public void removeProduct(){
+		super.removeProduct();
+		saveProductListToFile();
+		
+	}
+	@Override
+	public void removeCategory(){
+		super.removeCategory();
+		saveProductListToFile();
+		
+	}
+
+
+	public void saveProductListToFile() {
+	    try (FileOutputStream fileOut = new FileOutputStream(inventoryFile);
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+
+	        // Write the productList to the file
+	        out.writeObject(productList);
+	        
+	        System.out.println(YELLOW+"Product list has been saved to " + inventoryFile);
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        System.out.println(RED+"An error occurred while saving the Inventory.");
+	    }
+	}
+	
+	public void readProductListFromFile() {
+		try(FileInputStream fileIn = new FileInputStream(inventoryFile);
+			ObjectInputStream in = new ObjectInputStream(fileIn)){
+		productList=(Map<String, List<Product>>) in.readObject();
+		
+	}catch(Exception e) {
+		//e.printStackTrace();
+		System.out.println(YELLOW+"An error occured while reading the Inventory");
+	}
+		
+	}
+	
+
+}

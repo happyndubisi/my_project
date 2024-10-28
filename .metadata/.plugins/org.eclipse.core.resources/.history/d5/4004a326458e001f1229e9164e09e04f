@@ -1,0 +1,96 @@
+package personl_project.my_project;
+
+import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Inventory {
+	Scanner scanner;
+	
+	static Map<String, List<Product>> productList;
+	
+	public Inventory(Scanner scanner) {
+		this.scanner = scanner;
+		//map to store product category and the list of product information
+		
+		productList = new HashMap<>();
+	}
+	// method to add new category and product
+	public void addProduct() {
+		System.out.print("Enter product produt category: ");
+		String productCategoryEntry = scanner.nextLine();
+		
+		System.out.print("Enter Product name: ");
+		String productNameEntry = scanner.nextLine();
+		
+		System.out.print("Enter product ID: ");
+		String productIdEntry = scanner.nextLine();
+		
+		System.out.println("Enter product price: ");
+		double productEntry = scanner.nextDouble();
+		scanner.nextLine();
+		System.out.println("Enter product quantity: ");
+		int  productQuantityEntry = scanner.nextInt();
+		scanner.nextLine();
+
+		Product product = new Product(productCategoryEntry,productNameEntry, productIdEntry, productEntry, productQuantityEntry);
+		
+		
+		String category = product.getCategory();
+		// if category does not exist create new category and empty arraylist to add products
+		productList.putIfAbsent(category, new ArrayList<>());
+		// if category exist just add product as values to it
+        productList.get(category).add(product);
+        //System.out.println(productList);
+        System.out.println(product);
+      
+        System.out.println("Product added successfully.");
+		
+		
+	}
+	
+	//method to remove product
+	public void removeProduct() {
+		System.out.println("Enter product ID or product name to be removed: ");
+		String productToRemove = scanner.nextLine();
+	 Iterator<Product> iterator = ((List<Product>) productList).iterator(); // i had to add cast to productList
+	    while (iterator.hasNext()) {
+	        Product product = iterator.next();
+	        if (product.getProductID().equalsIgnoreCase(productToRemove) || product.getProductID().equalsIgnoreCase(productToRemove) ) {
+	            iterator.remove();  // Safely remove the product
+	            System.out.println("Product removed!");
+	            break;  // Exit the loop after removing the product
+	        } // If no product was found, print the message
+		    else {
+		        System.out.println("Product not found!");
+		    }
+	    }
+	}
+	//method to Search for a product"
+	public void viewProduct() {
+		System.out.println("Enter the product name or productID to view");
+		String viewProductEntry = scanner.nextLine();
+		for(Map.Entry<String, List<Product>> entry: productList.entrySet()) {
+			List<Product> products= entry.getValue();
+			for(Product product : products) {
+				if(viewProductEntry.equalsIgnoreCase(product.getProductID())|| viewProductEntry.equalsIgnoreCase(product.getProductName())); 
+				System.out.println("Found product!!");
+				System.out.println(productList.get(viewProductEntry));
+			}
+	}
+	}
+	//method to view all product
+	public void viewAllProduct() { 
+		System.out.println(productList);
+		
+	}
+
+	   
+	
+	
+	
+}

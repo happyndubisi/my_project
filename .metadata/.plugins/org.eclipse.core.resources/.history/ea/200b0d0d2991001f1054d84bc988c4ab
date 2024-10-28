@@ -1,0 +1,14 @@
+package personl_project.my_project;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class InventoryFileUpdate {
+
+
+
+
+
+
+
+
+}

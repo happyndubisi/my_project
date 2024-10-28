@@ -1,0 +1,124 @@
+package personl_project.my_project;
+
+import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Inventory {
+	Scanner scanner;
+	
+	static Map<String, List<Product>> productList;
+	
+	public Inventory(Scanner scanner) {
+		this.scanner = scanner;
+		//map to store product category and the list of product information
+		
+		productList = new HashMap<>();
+	}
+	// Method to display the inventory in the desired format
+	public void displayInventory() {
+	    System.out.println("{");
+	    for (Map.Entry<String, List<Product>> entry : productList.entrySet()) {
+	        String category = entry.getKey();
+	        List<Product> products = entry.getValue();
+
+	        // Print the category on a new line
+	        System.out.println("    \"" + category + "\" -> [");
+
+	        for (int i = 0; i < products.size(); i++) {
+	            // Print each product on a new line, indented
+	            System.out.println("        " + products.get(i));
+
+	            if (i < products.size() - 1) {
+	                System.out.println(","); // Add a comma after each product except the last one
+	            }
+	        }
+
+	        System.out.println("    ],"); // Close the product list for the category
+	    }
+	    System.out.println("}");
+	}
+		
+	// method to add new category and product
+	public void addProduct() {
+		System.out.print("Enter product category: ");
+		String productCategoryEntry = scanner.nextLine();
+		
+		System.out.print("Enter Product name: ");
+		String productNameEntry = scanner.nextLine();
+		
+		System.out.print("Enter product ID: ");
+		String productIdEntry = scanner.nextLine();
+		
+		System.out.print("Enter product price: ");
+		double productEntry = scanner.nextDouble();
+		scanner.nextLine();
+		System.out.print("Enter product quantity: ");
+		int  productQuantityEntry = scanner.nextInt();
+		scanner.nextLine();
+
+		Product product = new Product(productCategoryEntry,productNameEntry, productIdEntry, productEntry, productQuantityEntry);
+		
+		
+		String category = product.getCategory();
+		// if category does not exist create new category and empty arraylist to add products
+		productList.putIfAbsent(category, new ArrayList<>());
+		// if category exist just add product as values to it
+        productList.get(category).add(product);
+      
+        System.out.println("Product added successfully.");
+		
+		
+	}
+	
+	//method to remove product
+	public void removeProduct() {
+		System.out.print("Enter product ID or product name to be removed: ");
+		String productToRemove = scanner.nextLine();
+		for(Map.Entry<String, List<Product>>entry:productList.entrySet()) {
+			List<Product>products=entry.getValue();
+			for(Product product: products) {
+				if (product.getProductID().equalsIgnoreCase(productToRemove) || product.getProductID().equalsIgnoreCase(productToRemove) ) {
+					productList.remove(productToRemove);
+					System.out.println("Product removed!");
+					
+				}else {
+					System.out.println("Product not found!");
+				}
+				
+			}
+		}
+	}
+	//method to Search for a product"
+	public void viewProduct() {
+		System.out.println("Enter the product name or productID to view");
+		String viewProductEntry = scanner.nextLine();
+		for(Map.Entry<String, List<Product>> entry: productList.entrySet()) {
+			List<Product> products= entry.getValue();
+			for(Product product : products) {
+				if(viewProductEntry.equalsIgnoreCase(product.getProductID())|| viewProductEntry.equalsIgnoreCase(product.getProductName())){ 
+				System.out.println("Found product!!");
+				System.out.println(productList.get(viewProductEntry));
+			}else {
+				System.out.println("Found product!!");
+			}
+	}
+	}
+	}
+	//method to view all product
+	public void viewAllProduct() { 
+		System.out.println(productList);
+	}
+	
+
+	
+
+	   
+	
+	
+	
+}

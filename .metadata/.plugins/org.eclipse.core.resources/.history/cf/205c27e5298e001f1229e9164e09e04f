@@ -1,0 +1,59 @@
+package personl_project.my_project;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		do {
+		System.out.println("Store Management");
+		System.out.println("1. Add a product");
+		System.out.println("2. Remove a product");
+		System.out.println("3. Update a product");
+		System.out.println("4. View a product");
+		System.out.println("5. View all product");
+		System.out.println("6. Search for a product");
+		System.out.println("7. Exit");
+		System.out.println("--------------------------");
+		
+		
+		int input = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("--------------------------");
+		
+		Inventory inventory=new Inventory(scanner);
+		
+		
+		switch(input) {
+		
+		case 1 ->  inventory.addProduct();
+            
+		/*case 2:
+			System.out.println("Enter product ID to be removed");
+			String productToRemove = scanner.nextLine();
+			inventory.removeProduct(productToRemove);
+			System.out.println("To continue press 1 else press any key");
+			cont = scanner.nextInt();
+			break;
+			
+		case 3:
+			System.out.println("");
+			*/
+		case 5 -> inventory.viewAllProduct(); 
+		
+		case 7 -> {scanner.close();System.exit(0);}
+		}System.out.println("\n");
+		}while(true);
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

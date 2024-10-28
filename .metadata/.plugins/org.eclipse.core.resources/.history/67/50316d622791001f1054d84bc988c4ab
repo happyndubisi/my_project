@@ -1,0 +1,14 @@
+package personl_project.my_project;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+
+public class ProductListFile {
+	public void productListFile(String inventoryFile) {
+		try(FileOutputStream fileOut = new FileOutputStream(inventoryFile);
+				objectOutputStream out = new objectOutputStream(ifeOut)){
+			
+		}
+	}
+
+}

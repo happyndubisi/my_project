@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="InventoryTest" project="my_project" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="personl_project.my_project.InventoryTest" time="0.004" displayname="InventoryTest" uniqueid="[engine:junit-jupiter]/[class:personl_project.my_project.InventoryTest]">
+    <testcase name="testAddProduct" classname="personl_project.my_project.InventoryTest" time="0.004" displayname="testAddProduct()" uniqueid="[engine:junit-jupiter]/[class:personl_project.my_project.InventoryTest]/[method:testAddProduct()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	Syntax error, insert ";" to complete BlockStatements
+
+	at personl_project.my_project.InventoryTest.setUp(InventoryTest.java:14)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

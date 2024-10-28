@@ -1,0 +1,35 @@
+package personl_project.my_project;
+
+import java.util.Scanner;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
+public class InventoryTest extends TestCase {
+	   public InventoryTest( String testName )
+	    {
+	        super( testName );
+	    }
+
+	    /**
+	     * @return the suite of tests being tested
+	     */
+	    public static Test suite()
+	    {
+	        return new TestSuite( InventoryTest.class );
+	    }
+
+	    /**
+	     * Rigourous Test :-)
+	     */
+	    public void testAddProduct()
+	    {
+	       Inventory inventory = new Inventory(new Scanner(System.in));
+	       int categoryPreviousSize = inventory.getAllCategory().size();
+	       inventory.addProduct("newCategory", "newProductName", "newProductId", 123.00f, 10);
+	       int categoryCurrentSize = inventory.getAllCategory().size();
+	       assert(categoryPreviousSize != categoryCurrentSize);
+	    }
+
+}

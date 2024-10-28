@@ -1,0 +1,71 @@
+package personl_project.my_project;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+
+		int cont=0;
+		Scanner scanner = new Scanner(System.in);
+		
+		do {
+		System.out.println("Store Management");
+		System.out.println("1. Add a product");
+		System.out.println("2. Remove a product");
+		System.out.println("3. Update a product");
+		System.out.println("4. View a product");
+		System.out.println("5. Search for a product");
+		System.out.println("6 Exist");
+		System.out.println("--------------------------");
+		
+		
+		int input = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("--------------------------");
+		
+		Inventory inventory=new Inventory();
+		
+		
+		switch(input) {
+		
+		case 1:
+			System.out.println("Enter product produt category");
+			String productCategoryEntry = scanner.nextLine();
+			
+			System.out.println("Enter Product name");
+			String productNameEntry = scanner.nextLine();
+			
+			System.out.println("Enter product ID");
+			String productIdEntry = scanner.nextLine();
+			
+			System.out.println("Enter product price");
+			double productEntry = scanner.nextDouble();
+			scanner.nextLine();
+			System.out.println("Enter product quantity");
+			int productQuantityEntry = scanner.nextInt();
+			scanner.nextLine();
+			
+			Product product = new Product(productCategoryEntry,productNameEntry, productIdEntry, productEntry, productQuantityEntry);  
+			inventory.addProduct(product); 
+			System.out.println("Product added successfully.");
+			System.out.println("To continue press 1 else press any key");
+			cont = scanner.nextInt();
+            break;
+            
+            
+		case 2:
+			System.out.print("Enter product ID to be removed");
+			String productToRemove = scanner.nextLine();
+			
+		}
+		}while(cont!=6);
+		
+		
+		
+		
+		
+		scanner.close();
+		
+	}
+
+}
